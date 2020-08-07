@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Chan Yuhong">
+
+
+
+
+
+<title>Hexo+Github博客搭建简单总结 | Hexo</title>
+
+
+
+    <link rel="icon" href="/%E2%80%AA/hans.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Hans👨‍🚀Zone</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Hans👨‍🚀Zone</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Hexo+Github博客搭建简单总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Chan Yuhong</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">August 7, 2020&nbsp;&nbsp;20:48:44</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><blockquote>
+<p>Hexo是一个快速、简洁且高效的博客框架，我们可以简单部署在Github上来实现一个简单的个人博客，不过可能需要科学上网。</p>
+</blockquote>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol>
+<li>注册Github </li>
+<li>安装Git </li>
+<li>安装Node.js </li>
+<li>安装Hexo </li>
+<li>连接Github与本地 </li>
+<li>开始写博客</li>
+</ol>
+<blockquote>
+<pre><code>欢迎来到 [我的博客](https://chanyuhong.github.io/) ！！！</code></pre></blockquote>
+<h2 id="注册Github"><a href="#注册Github" class="headerlink" title="注册Github"></a>注册Github</h2><blockquote>
+<p><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+</blockquote>
+<ol>
+<li><p>创建仓库：+ New repository<br><img src="https://img-blog.csdnimg.cn/20200807195039890.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+</li>
+<li><p>仓库名称： <code>xxxxxxx.github.io</code> </p>
+</li>
+<li><p>勾选README<br><img src="https://img-blog.csdnimg.cn/20200807195110562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt=""></p>
+</li>
+<li><p>Settings→GitHub Pages→Choose a theme<img src="https://img-blog.csdnimg.cn/20200807195154814.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><blockquote>
+<p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><blockquote>
+<p><a href="https://nodejs.org/" target="_blank" rel="noopener">https://nodejs.org/</a></p>
+</blockquote>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ol>
+<li>创建一个文件夹存放博客文件，在该文件夹内右键 <em>Git Bash Here</em> </li>
+<li>可添加国内镜像源：<code>npm config set registry https://registry.npm.taobao.org</code><br><img src="https://img-blog.csdnimg.cn/20200807195939319.png" alt="在这里插入图片描述"></li>
+</ol>
+<ol start="3">
+<li><p>安装Hexo：<code>npm i hexo-cli -g</code><br><img src="https://img-blog.csdnimg.cn/20200807195949604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>初始化：<code>hexo init</code><br><img src="https://img-blog.csdnimg.cn/20200807200000637.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>安装组件：<code>npm install</code><br><img src="https://img-blog.csdnimg.cn/20200807200009988.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>生成静态网页：<code>hexo g</code><br><img src="https://img-blog.csdnimg.cn/20200807200027274.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>打开本地服务器：<code>hexo s</code><br><img src="https://img-blog.csdnimg.cn/20200807201429557.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>浏览器：<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20200807200054822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="同步Github与本地"><a href="#同步Github与本地" class="headerlink" title="同步Github与本地"></a>同步Github与本地</h2><ol>
+<li><p>输入：<code>git config --global user.name &quot;用户名&quot;</code> </p>
+</li>
+<li><p>输入：<code>git config --global user.email &quot;邮箱&quot;</code><br><img src="https://img-blog.csdnimg.cn/20200807200101201.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>然后生成密钥SSH key：<code>ssh-keygen -t rsa -C &quot;邮箱&quot;</code><br><img src="https://img-blog.csdnimg.cn/2020080720011774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>将生成的id_rsa.pub打开，复制内容<br><img src="https://img-blog.csdnimg.cn/20200807200125302.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>github首页→settings→SSH and GPG keys→new SSH keep→粘贴复制的内容<br><img src="https://img-blog.csdnimg.cn/20200807200132326.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020080720014075.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200807200150211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>输入：<code>ssh -T git@github.com</code><br><img src="https://img-blog.csdnimg.cn/2020080720023138.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>打开博客的配置文件_config.yml<br>修改最后一行的配置：</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository:  仓库地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200807200239151.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="开始写博客"><a href="#开始写博客" class="headerlink" title="开始写博客"></a>开始写博客</h2><ol>
+<li>首先在博客根目录下右键打开<em>git bash</em> </li>
+<li>安装扩展：<code>npm i hexo-deployer-git</code></li>
+<li>新建文章：<code>hexo new post &quot;文章名&quot;</code><br><img src="https://img-blog.csdnimg.cn/20200807200249850.png" alt="在这里插入图片描述"></li>
+<li>编写markdown文件<br><img src="https://img-blog.csdnimg.cn/2020080720030333.png" alt="在这里插入图片描述"></li>
+<li>生成静态网页：<code>hexo g</code> </li>
+<li>打开本地服务器：<code>hexo s</code> </li>
+<li>上传到github：<code>hexo d</code><br><img src="https://img-blog.csdnimg.cn/2020080720030812.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTk0MjUzOA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2></li>
+</ol>
+<blockquote>
+<p>这是Hexo+Github博客搭建的简单，还有很多功能可以拓展，有机会以后补充。</p>
+</blockquote>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Chan Yuhong</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/08/07/Hexo+Github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">http://yoursite.com/2020/08/07/Hexo+Github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/</a></span>
+                    </p>
+                
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/08/07/Friday/">Friday</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Chan Yuhong | Powered by Hexo & Chic</span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
