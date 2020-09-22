@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Chan Yuhong">
+
+
+
+
+
+<title>【前端学习笔记】JavaScript基础 | Hexo</title>
+
+
+
+    <link rel="icon" href="/%E2%80%AA/hans.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Hans👨‍🚀Zone</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Hans👨‍🚀Zone</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【前端学习笔记】JavaScript基础</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Chan Yuhong</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 22, 2020&nbsp;&nbsp;23:41:17</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="javascript基础"><a href="#javascript基础" class="headerlink" title="javascript基础"></a>javascript基础</h1><h2 id="javascript组成"><a href="#javascript组成" class="headerlink" title="javascript组成"></a>javascript组成</h2><ol>
+<li>ECMAScript  3，4  5，6，7</li>
+<li>DOM  文档</li>
+<li>BOM  浏览器<h2 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h2><ul>
+<li>属性：<br>1、type = ‘text/javascript’  声明当前标签内写的文本格式（省略）<br>2、src = ‘demo.js’ 引入外部的.js文件</li>
+<li>注意点：<br>1、可以有多个script标签，多个script标签是自上而下顺序执行<br>2、一个script标签只能专心的做一个事情<h2 id="输出方法"><a href="#输出方法" class="headerlink" title="输出方法"></a>输出方法</h2></li>
+</ul>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert()</span><br><span class="line"><span class="built_in">document</span>.write()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在当前页面上输出内容</li>
+<li>如果内容中含有标签会自动解析。</li>
+<li>转义字符：    <code>&amp; and符号 &amp;lt; &amp;gt;</code><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行注释   ctrl + <span class="regexp">/  快捷键</span></span><br><span class="line"><span class="regexp">多行注释  ctrl + shift + a 快捷键</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>1.基本数据类型：</p>
+<ul>
+<li>数字<br>类型： number<br>例子：100 -20 3.14</li>
+<li>布尔值<br>类型： boolean<br>例子： true false</li>
+<li>字符串<br>类型：所有带单引号或者双引号的都叫做字符串。<br>（单引号/双引号效果一样，必须成对）<br>例子： ‘hello’ “world”  ‘100’ “3.14”</li>
+</ul>
+<p>2.复合/引用数据类型</p>
+<p>3.特殊数据类型：</p>
+<ul>
+<li>null  空</li>
+<li>undefined</li>
+<li>NaN (not a number)<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2>1、声明变量（必须声明以后才能使用）<br>  关键字(系统征用的有特殊功能的单词叫做关键字)： var 声明变量。<br>2、初始化：声明变量的时候，直接给这个变量赋值叫做初始化。<br>3、如果我们声明变量的时候，没有值赋给这个变量，系统默认赋值成undefined。<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2>1、只能由数字、字母、下划线和美元符号($)组成<br>2、不能以数字开头<br>3、不能保留字和关键字<br>4、大写小敏感 age Age 这是两个完全不同的变量<br>5、见名思意(尽量使用英文全称)<br>6、单词个数超过两个的  </li>
+<li>驼峰式命名 className</li>
+<li>下划线命名(烤串式命名) class_name</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Chan Yuhong</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/09/22/September/">September</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Chan Yuhong | Powered by Hexo & Chic</span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
