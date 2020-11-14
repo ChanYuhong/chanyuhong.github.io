@@ -12,7 +12,7 @@
 
 
 
-<title>【前端学习笔记】JavaScript基础 | Hans👨‍🚀Zone</title>
+<title>【前端学习笔记】JavaScript运算符 | Hans👨‍🚀Zone</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">【前端学习笔记】JavaScript基础</h1>
+            <h1 class="post-title">【前端学习笔记】JavaScript运算符</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">September 22, 2020&nbsp;&nbsp;23:41:17</a>
+                        Date: <a href="#">November 15, 2020&nbsp;&nbsp;6:09:37</a>
                         </span>
                     
                     
@@ -191,37 +191,83 @@
         </header>
 
         <div class="post-content">
-            <h1 id="javascript基础"><a href="#javascript基础" class="headerlink" title="javascript基础"></a>javascript基础</h1><h2 id="javascript组成"><a href="#javascript组成" class="headerlink" title="javascript组成"></a>javascript组成</h2><ol>
-<li>ECMAScript  3，4  5，6，7</li>
-<li>DOM  文档</li>
-<li>BOM  浏览器<h2 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h2><ul>
-<li>属性：<br>1、type = ‘text/javascript’  声明当前标签内写的文本格式（省略）<br>2、src = ‘demo.js’ 引入外部的.js文件</li>
-<li>注意点：<br>1、可以有多个script标签，多个script标签是自上而下顺序执行<br>2、一个script标签只能专心的做一个事情<h2 id="输出方法"><a href="#输出方法" class="headerlink" title="输出方法"></a>输出方法</h2></li>
-</ul>
+            <h1 id="JavaScript运算符"><a href="#JavaScript运算符" class="headerlink" title="JavaScript运算符"></a>JavaScript运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><pre><code>+ - * / %(取余符号) </code></pre><ol>
+<li>不同数据类型之前是没有办法进行运算。自动数据类型转换：那么不同数据类型的数据，需要先自动数据类型转换成同一数据类型，再进行后续的运算。</li>
+<li>任何类型的数据和字符串类型的数据做相加（+）操作时，其他数据类型会自动的转换为字符串类型。此时的相加（+）不再是数学意义上的加法，而是表示“拼接”的意思。</li>
+<li>字符串做相加运算之外的运算，那么字符串会先转成数字，再进行运算。</li>
+</ol>
+<pre><code> 1. &quot;100&quot;纯数字字符的字符串，可以直接转成数字
+2. &quot;100a&quot;有非数字字符的字符串，转成NaN(not a number)
+3. 任何数据和NaN做数学运算，都是NaN。</code></pre><ol start="3">
+<li><p>除字符串以外的数据，和数字进行算数运算的时候，将别的数据类型先转成数字再进行运算。</p>
+</li>
+<li><p>计算机在进行算数运算的细节:</p>
+<ol>
+<li>计算机在进行小数运算的时候，绝对有误差(尽量使用整数计算)</li>
+<li>除数可以为0</li>
+</ol>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alert()</span><br><span class="line"><span class="built_in">document</span>.write()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在当前页面上输出内容</li>
-<li>如果内容中含有标签会自动解析。</li>
-<li>转义字符：    <code>&amp; and符号 &amp;lt; &amp;gt;</code><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2></li>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul>
+<li><p>普通赋值运算：=</p>
+<p>  功能：将等号右边的值，赋值给等号左边的变量。</p>
+</li>
+<li><p>复合赋值运算：x=</p>
+<p>  += -= *= /= %=</p>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行注释   ctrl + <span class="regexp">/  快捷键</span></span><br><span class="line"><span class="regexp">多行注释  ctrl + shift + a 快捷键</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>1.基本数据类型：</p>
+<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><p>  将任何运算符和操作数组合的式子叫做表达式。</p>
 <ul>
-<li>数字<br>类型： number<br>例子：100 -20 3.14</li>
-<li>布尔值<br>类型： boolean<br>例子： true false</li>
-<li>字符串<br>类型：所有带单引号或者双引号的都叫做字符串。<br>（单引号/双引号效果一样，必须成对）<br>例子： ‘hello’ “world”  ‘100’ “3.14”</li>
+<li>表达式的值</li>
+<li>表达式的功能</li>
 </ul>
-<p>2.复合/引用数据类型</p>
-<p>3.特殊数据类型：</p>
-<ul>
-<li>null  空</li>
-<li>undefined</li>
-<li>NaN (not a number)<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2>1、声明变量（必须声明以后才能使用）<br>  关键字(系统征用的有特殊功能的单词叫做关键字)： var 声明变量。<br>2、初始化：声明变量的时候，直接给这个变量赋值叫做初始化。<br>3、如果我们声明变量的时候，没有值赋给这个变量，系统默认赋值成undefined。<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2>1、只能由数字、字母、下划线和美元符号($)组成<br>2、不能以数字开头<br>3、不能保留字和关键字<br>4、大写小敏感 age Age 这是两个完全不同的变量<br>5、见名思意(尽量使用英文全称)<br>6、单词个数超过两个的  </li>
-<li>驼峰式命名 className</li>
-<li>下划线命名(烤串式命名) class_name</li>
+<h2 id="一元运算符："><a href="#一元运算符：" class="headerlink" title="一元运算符："></a>一元运算符：</h2><pre><code>a++ ++后置，先取a的值，然后对a进行+1操作
+++a ++前置，先对a进行+1操作，然后取a的值
+a-- --后置，先取a的值，然后对a进行-1操作
+--a --前置，先对a进行-1操作，再去a的值</code></pre><h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><pre><code>&gt;  &lt;  &gt;=  &lt;=  ==  !=  判断值相等
+=== !==  既得判断值相等，还需要判断数据类型也相等。</code></pre><p>关系运算里面的规则(自动数据类型转换)：</p>
+<ol>
+<li><p>和其他运算符一样,当关系运算符操作非数值时要遵循以下规则:</p>
+<ol>
+<li>两个操作数都是数值，则数值比较；<ol start="2">
+<li>两个操作数都是字符串，则比较两个字符串对应的字符编码值；<pre><code>&lt;1&gt;如果都是单个字符，直接比较ASCII码值大小
+&lt;2&gt;逐位进行比较(第一位和第一位比较，第二位和第二位比较...)
+一旦比较出大小，直接得出结果。</code></pre></li>
+<li>两个操作数有一个是数值，则将另一个转换为数值，再进行数值比较； </li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>在相等和不等的比较上，如果操作数是非数值，则遵循以下下规则：</p>
+<ol>
+<li>一个操作数是布尔值，则比较之前将其转换为数值，false 转成 0，true 转成 1；<ol start="2">
+<li>一个操作数是字符串，则比较之前将其转成为数值再比较</li>
+<li>一个操作数是 NaN，则==返回 false，!=返回 true；并且 NaN 和自身不等；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li><p>与运算</p>
+<pre><code>格式：表达式1 &amp;&amp; 表达式2
+ 规则：两个表达式都为true的时候，才为true。
+ 短路操作：如果表达式1为false，那么表达式2就不执行了，直接得结果为false。</code></pre></li>
+<li><p>或运算</p>
+<p> 格式：表达式1 || 表达式2</p>
+<pre><code>规则：两个表达式都为false的时候，才为false。
+短路操作：如果表达式1为true，那么表达式2就不执行了，直接得结果为true。</code></pre></li>
+<li><p>非运算</p>
+<p> 格式：!表达式</p>
+<pre><code>规则：现将原有的表达式自动数据类型转换成布尔值，然后取反。
+规律：
+    1.操作数是一个空字符串，返回 true；
+    2.操作数是一个非空字符串，返回 false；
+    3.操作数是数值 0，返回 true；
+    4.操作数是任意非 0 数值(包括 Infinity)，false；
+    5.操作数是 NaN，返回 true；
+    6.操作数是 undefined，返回 true；
+口诀：非0即真，非空即真。</code></pre></li>
 </ul>
 
         </div>
@@ -255,10 +301,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/11/15/%E3%80%90%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91JavaScript%E6%95%B0%E7%BB%84/">【前端学习笔记】JavaScript数组</a>
+                <a class="prev" rel="prev" href="/2020/11/15/HTML+CSS%20%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AB%8B%E6%96%B9%E4%BD%93/">HTML+CSS 实现一个立方体</a>
             
             
-            <a class="next" rel="next" href="/2020/09/22/September/">September</a>
+            <a class="next" rel="next" href="/2020/11/15/%E3%80%90%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91JavaScript%E6%95%B0%E7%BB%84/">【前端学习笔记】JavaScript数组</a>
             
         </section>
 

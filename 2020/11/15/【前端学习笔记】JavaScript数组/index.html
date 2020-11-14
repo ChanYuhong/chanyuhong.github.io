@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Chan Yuhong">
+
+
+
+
+
+<title>【前端学习笔记】JavaScript数组 | Hans👨‍🚀Zone</title>
+
+
+
+    <link rel="icon" href="/%E2%80%AA/hans.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Hans👨‍🚀Zone</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Hans👨‍🚀Zone</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【前端学习笔记】JavaScript数组</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Chan Yuhong</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 15, 2020&nbsp;&nbsp;6:09:37</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="JavaScript数组"><a href="#JavaScript数组" class="headerlink" title="JavaScript数组"></a>JavaScript数组</h1><h2 id="声明数组"><a href="#声明数组" class="headerlink" title="声明数组"></a>声明数组</h2><ol>
+<li>通过new创建数组</li>
+<li>省略new运算符创建数组</li>
+<li>数组常量进行赋值。（JS一般使用中括号[]）;</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">100</span>, <span class="literal">true</span>, <span class="string">"hello"</span>);</span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(<span class="number">100</span>, <span class="literal">true</span>, <span class="string">"hello"</span>);</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">100</span>, <span class="literal">true</span>, <span class="string">"hello"</span>];</span><br><span class="line"><span class="comment">//声明长度为10的数组，数组中没有数据。</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组的属性："><a href="#数组的属性：" class="headerlink" title="数组的属性："></a>数组的属性：</h2><ul>
+<li>数组.length  返回值数组【元素】的个数。</li>
+</ul>
+<h2 id="元素："><a href="#元素：" class="headerlink" title="元素："></a>元素：</h2><ul>
+<li><p>访问数组的元素：</p>
+</li>
+<li><p>数组[下标]; 下标是从0开始的。</p>
+</li>
+<li><p>数组和循环是天生一对。</p>
+<ul>
+<li>for循环</li>
+<li>for…in循环  快速遍历</li>
+</ul>
+</li>
+</ul>
+<h2 id="Math-random-随机数"><a href="#Math-random-随机数" class="headerlink" title="Math.random()  随机数"></a>Math.random()  随机数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> random = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    random[i]=<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.write(random);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> random)&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(random[i]+<span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h2><ul>
+<li><p>栈结构</p>
+<ul>
+<li>push<ul>
+<li>功能：给数组的末尾添加元素。</li>
+<li>格式：数组.push(参数1, 参数2…);</li>
+<li>返回值：插完元素以后数组的长度。</li>
+</ul>
+</li>
+<li>pop<ul>
+<li>功能：从数组末尾取下一个元素</li>
+<li>格式：数组.pop()</li>
+<li>参数：没有参数</li>
+<li>返回值：取下一个元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>队列</p>
+<ul>
+<li>push</li>
+<li>shift<ul>
+<li>功能：从数组的头部取下一个元素</li>
+<li>格式：数组.shift()</li>
+<li>参数：没有参数</li>
+<li>返回值：取下的元素</li>
+</ul>
+</li>
+<li>unshift<ul>
+<li>功能：从数组的头部插入元素</li>
+<li>格式：数组.unshift(参数1, 参数2…)</li>
+<li>返回值：插完元素以后数组的长度。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>reverse  逆序</p>
+</li>
+<li><p>sort</p>
+<ul>
+<li><p>功能：默认从小到大排序，按照字符串排序。 </p>
+</li>
+<li><p>格式：数组.sort()  </p>
+</li>
+<li><p>参数：一个函数，代表要怎么去进行排序（固定用法）</p>
+<ol>
+<li><p>按照数字从小到大</p>
+<pre><code>arr.sort(function(value1, value2){
+            return value1 - value2;
+})</code></pre></li>
+<li><p>按照数字从大到小</p>
+<pre><code>arr.sort(function(value1, value2){
+            return value2 - value1;
+ })</code></pre></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>splice()</p>
+<ul>
+<li>功能：可以完成 增、删、改三个功能</li>
+<li>格式：数组.splice(start, length, 数据1, 数据2…);</li>
+<li>参数：<ul>
+<li>start  开始截取的位置</li>
+<li>length 截取的元素的长度</li>
+<li>第三个参数开始：在start位置，插入的元素。</li>
+</ul>
+</li>
+<li>返回值：截取下来的元素组成的数组。</li>
+</ul>
+</li>
+<li><p>concat</p>
+<ul>
+<li>功能：拷贝数组，生成一个新数组(不会修改原数组）</li>
+<li>合并数组，如果参数是数组，数组中元素单独合并</li>
+</ul>
+</li>
+<li><p>slice</p>
+<ul>
+<li>功能：数组提取元素(不会修改原数组）</li>
+<li>格式：数组.slice(start, end);  [start, end) </li>
+</ul>
+</li>
+<li><p>join()</p>
+<ul>
+<li>功能：将数组中的元素，用传入的拼接符，拼接成一个字符串</li>
+<li>格式：数组.join(“字符串”)</li>
+<li>返回值：拼接好的字符串。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数组</span></span><br><span class="line"><span class="keyword">var</span> countries = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"china"</span>, <span class="string">"usa"</span>, <span class="string">"uk"</span>, <span class="string">'japan'</span>);</span><br><span class="line"><span class="built_in">document</span>.write(countries + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line"><span class="comment">// china, usa, uk, japan</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//栈结构</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* push</span></span><br><span class="line"><span class="comment">功能：给数组的末尾添加元素。</span></span><br><span class="line"><span class="comment">格式：数组.push(参数1, 参数2…);</span></span><br><span class="line"><span class="comment">返回值：插完元素以后数组的长度。 */</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"push返回值："</span> + countries.push(<span class="string">"korea"</span>, <span class="string">"russia"</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// push返回值：6 原数组：china, usa, uk, japan, korea, russia</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* pop</span></span><br><span class="line"><span class="comment">功能：从数组末尾取下一个元素</span></span><br><span class="line"><span class="comment">格式：数组.pop()</span></span><br><span class="line"><span class="comment">参数：没有参数</span></span><br><span class="line"><span class="comment">返回值：取下一个元素 */</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"pop返回值："</span> + countries.pop() + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// pop返回值：russia 原数组：china, usa, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//队列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// push</span></span><br><span class="line"><span class="comment">/* shift</span></span><br><span class="line"><span class="comment">功能：从数组的头部取下一个元素</span></span><br><span class="line"><span class="comment">格式：数组.shift()</span></span><br><span class="line"><span class="comment">参数：没有参数</span></span><br><span class="line"><span class="comment">返回值：取下的元素 */</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"shift返回值："</span> + countries.shift() + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// shift返回值：china 原数组：usa, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*  unshift</span></span><br><span class="line"><span class="comment"> 功能：从数组的头部插入元素</span></span><br><span class="line"><span class="comment"> 格式：数组.unshift(参数1, 参数2…)</span></span><br><span class="line"><span class="comment"> 返回值：插完元素以后数组的长度。 */</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"unshift返回值："</span> + countries.unshift(<span class="string">"thailand"</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// unshift返回值：5 原数组：thailand, usa, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.concat() 方法可以基于当前数组创建一个新数组。</span></span><br><span class="line"><span class="keyword">var</span> co = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"concat返回值："</span> + countries.concat() + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// concat返回值：thailand, usa, uk, japan, korea 原数组：thailand, usa, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"concat返回值："</span> + countries.concat(co) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// concat返回值：thailand, usa, uk, japan, korea, 1, 2, 3 原数组：thailand, usa, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.slice() 方法可以基于当前数组获取指定区域元素[start, end)</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"slice返回值："</span> + countries.slice(<span class="number">0</span>, <span class="number">2</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// slice返回值：thailand, usa 原数组：thailand, usa, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.splice() 方法由于其参数的特殊性，可以完成 增、删、改三个功能</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"splice返回值："</span> + countries.splice(<span class="number">1</span>, <span class="number">0</span>, <span class="string">"india"</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// splice返回值： 原数组：thailand, india, usa, uk, japan, korea</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"splice返回值："</span> + countries.splice(<span class="number">1</span>, <span class="number">2</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// splice返回值：india, usa 原数组：thailand, uk, japan, korea</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"solice返回值："</span> + countries.splice(<span class="number">0</span>, <span class="number">1</span>, <span class="string">"poland"</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// solice返回值：thailand 原数组：poland, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.join() 方法用数组元素组成字符串。</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"join返回值："</span> + countries.join(<span class="string">"-"</span>) + <span class="string">" 原数组："</span> + countries + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// join返回值：poland - uk - japan - korea 原数组：poland, uk, japan, korea</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.reverse() 逆向排序</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"reverse返回值："</span> + co.reverse() + <span class="string">" 原数组："</span> + co + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// reverse返回值：3, 2, 1 原数组：3, 2, 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6.sort() 从小到大排序，字符串排序</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"sort返回值："</span> + co.sort() + <span class="string">" 原数组："</span> + co + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// sort返回值：1, 2, 3 原数组：1, 2, 3</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"sort返回值："</span> + co.sort(<span class="function"><span class="keyword">function</span> (<span class="params">value1, value2</span>) </span>&#123; <span class="keyword">return</span> value1 - value2 &#125;) + <span class="string">" 原数组："</span> + co + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// sort返回值：1, 2, 3 原数组：1, 2, 3</span></span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">"sort返回值："</span> + co.sort(<span class="function"><span class="keyword">function</span> (<span class="params">value1, value2</span>) </span>&#123; <span class="keyword">return</span> value2 - value1 &#125;) + <span class="string">" 原数组："</span> + co + <span class="string">"&lt;br/&gt;"</span>)</span><br><span class="line"><span class="comment">// sort返回值：3, 2, 1 原数组：3, 2, 1</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Chan Yuhong</span>
+                    </p>
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/11/15/%E3%80%90%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91JavaScript%E8%BF%90%E7%AE%97%E7%AC%A6/">【前端学习笔记】JavaScript运算符</a>
+            
+            
+            <a class="next" rel="next" href="/2020/09/22/%E3%80%90%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91JavaScript%E5%9F%BA%E7%A1%80/">【前端学习笔记】JavaScript基础</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Chan Yuhong | Powered by Hexo & Chic</span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
